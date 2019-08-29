@@ -1,0 +1,23 @@
+html,body{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+.mainText-box{
+    text-align: right;
+    text-orientation: upright;
+    height: 100%;
+    width: 100%;
+}
+
+.mainText-box > article{ 
+    display: inline-block;
+    font-size:11px;
+    letter-spacing: .08em;
+    line-height: 1.6em;
+    writing-mode:vertical-rl;
+    -ms-writing-mode: tb-rl;
+    -webkit-writing-mode:vertical-rl; 
+    text-orientation: upright;
+    -webkit-text-orientation:upright;
+}
