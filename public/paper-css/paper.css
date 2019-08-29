@@ -44,7 +44,7 @@ body.A6.landscape  .sheet { width: 148mm; height: 105mm }
   body.A3, body.A4.landscape { width: 297mm }
   body.A4, body.A5.landscape { width: 210mm }
   body.A5, body.A6.landscape { width: 148mm }
-  body.A6                    { width:105mm }
+  body.A6                    { width: 105mm }
   body.letter, body.legal    { width: 216mm }
   body.letter.landscape      { width: 280mm }
   body.legal.landscape       { width: 357mm }
