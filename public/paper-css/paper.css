@@ -27,6 +27,12 @@ body.A6.landscape  .sheet { width: 148mm; height: 105mm }
 .sheet.padding-15mm { padding: 15mm }
 .sheet.padding-20mm { padding: 20mm }
 .sheet.padding-25mm { padding: 25mm }
+.sheet.padding-novel {
+  padding-left: 13mm;
+  padding-right: 13mm;
+  padding-top: 15mm;
+  padding-bottom: 15mm;
+  }
 
 /** For screen preview **/
 @media screen {

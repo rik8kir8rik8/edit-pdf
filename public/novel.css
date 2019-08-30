@@ -5,19 +5,29 @@ html,body{
 }
 .mainText-box{
     text-align: right;
-    text-orientation: upright;
+    vertical-align:top;
     height: 100%;
     width: 100%;
 }
 
 .mainText-box > article{ 
     display: inline-block;
-    font-size:11px;
-    letter-spacing: .08em;
-    line-height: 1.6em;
+    font-size:9.5pt;
+    font-family: 'Noto Serif JP', serif;
+    /*text-indent:9.3pt;
+    letter-spacing: .08;*/
+    line-height: 1.4;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
     writing-mode:vertical-rl;
     -ms-writing-mode: tb-rl;
     -webkit-writing-mode:vertical-rl; 
-    text-orientation: upright;
-    -webkit-text-orientation:upright;
+    text-orientation: mixed;
+    -webkit-text-orientation:mixed;
+}
+
+.mainText-box > article p {
+    text-align: justify;
+    text-justify: inter-ideograph;
 }
