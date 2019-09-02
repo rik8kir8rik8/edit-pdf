@@ -1,17 +1,14 @@
 <template>
   <div id="app">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-        <form id="form" method="post" accept-charset="utf-8" return false>
+        <form id="form" action="url('http://localhost:8080/post')" method="post" accept-charset="utf-8" return false>
     <div class="form-group">
-      <label for="name">Name:</label>
       <input type="text" id="name" class="form-control" name="name"><br>
     </div>
     <div class="form-group">
-      <label for="text">Text:</label>
       <textarea id="text" class="form-control" name="text"></textarea>
     </div>
     </form>
-    <input type="button" id="sub" class="btn btn-dark" v-on:click="postClick" value="OK">
+    <input type="submit" id="sub" class="btn btn-dark" v-on:click="postClick" value="OK">
   </div>
 </template>
 
@@ -26,18 +23,24 @@ export default {
   components: {
     HelloWorld
   },
+    data: function() {
+        return {
+            rows: []
+        }
+    },
   methods: {
     postClick:function(){
       const nametxt = document.getElementById('name').value;
       const txt = document.getElementById('text').value;
-      const textData = { name: nametxt ,text: txt};
-   
+      const textData = {text: txt};
+
     axios.post('http://localhost:8080/post', textData)
     .then(res => {
-      alert("「" + res.name + "」登録完了");
+      this.rows = res.data;
+      alert(this.rows);
     })
     .catch(error=> {
-        alert("「" + error.name + "」登録失敗");
+        alert("「" + error.text + "」登録失敗");
     });
     }
   },
