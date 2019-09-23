@@ -1,59 +1,62 @@
 <template>
-  <div id="app">
-        <form id="form" action="url('http://localhost:8080/post')" method="post" accept-charset="utf-8" return false>
-    <div class="form-group">
-      <input type="text" id="name" class="form-control" name="name"><br>
-    </div>
-    <div class="form-group">
-      <textarea id="text" class="form-control" name="text"></textarea>
-    </div>
-    </form>
-    <input type="submit" id="sub" class="btn btn-dark" v-on:click="postClick" value="OK">
+<div class="d-flex" id="wrapper">
+    <sidebar/>
+    <pagecontent/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
-import Vue from 'vue'
-import axios from 'axios';
-Vue.prototype.$axios = axios;
+import pagecontent from './components/pagecontent.vue';
+import sidebar from './components/sidebar.vue';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
-  },
-    data: function() {
-        return {
-            rows: []
-        }
-    },
-  methods: {
-    postClick:function(){
-      const nametxt = document.getElementById('name').value;
-      const txt = document.getElementById('text').value;
-      const textData = {text: txt};
-
-    axios.post('http://localhost:8080/post', textData)
-    .then(res => {
-      this.rows = res.data;
-      alert(this.rows);
-    })
-    .catch(error=> {
-        alert("「" + error.text + "」登録失敗");
-    });
-    }
-  },
+    pagecontent,sidebar
+  }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
 }
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
 </style>
